@@ -16,6 +16,18 @@ const ContactHero = () => {
     },
   };
 
+    const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section className={styles.container}>
       <motion.div
@@ -24,15 +36,15 @@ const ContactHero = () => {
         animate="visible"
         variants={containerVariants}
       >
-        <div className={styles.badge}>
+        <motion.div variants={itemVariants} className={styles.badge}>
           <span>CONTACT</span>
-        </div>
-        <h1 className={styles.title}>Get in Touch with Our Tax Experts</h1>
-        <p className={styles.description}>
+        </motion.div>
+        <motion.h1 variants={itemVariants} className={styles.title}>Get in Touch with Our Tax Experts</motion.h1>
+        <motion.p variants={itemVariants} className={styles.description}>
           Have questions about your personal or business taxes? Our team is here
           to provide clear guidance, secure support, and dependable solutions
           tailored to your needs.
-        </p>
+        </motion.p>
       </motion.div>
     </section>
   );

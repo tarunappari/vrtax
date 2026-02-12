@@ -23,32 +23,45 @@ const ContactInfo = () => {
     },
   ];
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i) => ({
+   const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
       opacity: 1,
-      y: 0,
       transition: {
-        delay: i * 0.1,
-        duration: 0.5,
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
         ease: "easeOut",
       },
-    }),
+    },
   };
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
+      className={styles.container}
+    >
       {contactData.map((item, index) => {
         const Icon = item.icon;
         return (
           <motion.div
+            variants={itemVariants}
             key={index}
             className={styles.card}
             custom={index}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={cardVariants}
           >
             <div className={styles.iconWrapper}>
               <Icon size={28} stroke={1.5} />
@@ -62,9 +75,8 @@ const ContactInfo = () => {
           </motion.div>
         );
       })}
-    </div>
+    </motion.div>
   );
 };
 
 export default ContactInfo;
-
