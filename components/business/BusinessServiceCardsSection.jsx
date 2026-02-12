@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import styles from "@/styles/services/ServicesCardsSection.module.scss";
 import {
   IconBriefcase,
@@ -79,21 +81,50 @@ const businessServices = [
 ];
 
 export default function BusinessServicesCardsSection() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className={styles.container}>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
+      className={styles.container}
+    >
       <div className={styles.titleSection}>
-        <h2>Our Individual Services Include</h2>
-        <p>
+        <motion.h2 variants={itemVariants}>Our Individual Services Include</motion.h2>
+        <motion.p  variants={itemVariants}> 
           Each return is carefully reviewed to ensure accuracy, compliance, and
           maximum eligible benefits.
-        </p>
+        </motion.p>
       </div>
       <section className={styles.wrapper}>
         {businessServices.map((service, index) => {
           const isRight = index % 2 === 0;
 
           return (
-            <div key={index} className={styles.card}>
+            <motion.div variants={itemVariants} key={index} className={styles.card}>
               <div
                 className={`${styles.cardInner} ${
                   isRight ? styles.right : styles.left
@@ -116,10 +147,10 @@ export default function BusinessServicesCardsSection() {
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </section>
-    </div>
+    </motion.div>
   );
 }
