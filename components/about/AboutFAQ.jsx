@@ -1,5 +1,5 @@
 "use client";
-
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -43,10 +43,39 @@ export default function AboutFAQ() {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section className={`${styles.container}`}>
-      <div className={styles.faqcontainer}>
-        <div className="mx-auto max-w-xl">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.7 }}
+        className={styles.faqcontainer}
+      >
+        <motion.div variants={itemVariants} className="mx-auto max-w-xl">
           <Accordion
             type="single"
             collapsible
@@ -77,17 +106,23 @@ export default function AboutFAQ() {
               customer support team
             </Link>
           </p>
-        </div>
+        </motion.div>
         <div className="mx-auto max-w-xl text-center">
-          <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl">
+          <motion.h2
+            variants={itemVariants}
+            className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl"
+          >
             Frequently Asked Questions
-          </h2>
-          <p className="text-muted-foreground mt-4 text-balance">
+          </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="text-muted-foreground mt-4 text-balance"
+          >
             Discover quick and comprehensive answers to common questions about
             our platform, services, and features.
-          </p>
+          </motion.p>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

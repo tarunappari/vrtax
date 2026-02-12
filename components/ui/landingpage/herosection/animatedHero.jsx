@@ -1,8 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { MoveRight, PhoneCall } from "lucide-react";
-import { Button } from "@/components/ui/landingpage/herosection/heroSectionButton";
 import styles from "@/styles/landingpage/Herosection.module.scss";
 import icon1 from "@/public/assets/icons/icon1.png";
 import icon2 from "@/public/assets/icons/icon8.png";
@@ -29,6 +27,18 @@ function Hero() {
     },
   };
 
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+  };
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (titleNumber === titles.length - 1) {
@@ -47,7 +57,7 @@ function Hero() {
       >
         <div className="flex gap-8 items-center justify-center flex-col">
           <div className="flex gap-4 flex-col">
-            <h1 className="text-5xl md:text-5xl max-w-5xl tracking-tighter text-center font-regular">
+            <motion.h1 variants={itemVariants} className="text-5xl md:text-5xl max-w-5xl tracking-tighter text-center font-regular">
               <span className="text-spektr-cyan-50 font-semibold">
                 “Modern Tax Filing, Simplified.{" "}
               </span>
@@ -75,21 +85,21 @@ function Hero() {
                   </motion.span>
                 ))}
               </span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-lg md:text-lg leading-relaxed tracking-tight text-muted-foreground max-w-4xl text-center">
+            <motion.p variants={itemVariants} className="text-lg md:text-lg leading-relaxed tracking-tight text-muted-foreground max-w-4xl text-center">
               At VR Tax Filing, we believe tax filing should be simple, transparent,
               and stress-free. Our mission is to provide individuals and
               businesses across the United States with secure, accurate, and
               fully IRS-compliant tax solutions.
-            </p>
+            </motion.p>
           </div>
-          <div className="getStartedBtn">
+          <motion.div variants={itemVariants} className="getStartedBtn">
             <button>Get Started</button>
             <span>
               <IconArrowNarrowRight stroke={2} />
             </span>
-          </div>
+          </motion.div>
         </div>
       </div>
 

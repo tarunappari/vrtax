@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import React from "react";
 import {
   Card,
@@ -52,6 +55,29 @@ export const ValuesGridUiSection = ({
   sectionTitle = "Our Core Values",
   sectionSubtitle = "A suite of powerful features engineered to deliver speed, security, and scalability.",
 }) => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section
       className={cn("bg-background text-foreground")}
@@ -60,19 +86,31 @@ export const ValuesGridUiSection = ({
         sectionTitle ? `Features: ${sectionTitle}` : "Product Features"
       }
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.7 }}
+        className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         {/* Section Header */}
         {(sectionTitle || sectionSubtitle) && (
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             {sectionTitle && (
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+              <motion.h2
+                variants={itemVariants}
+                className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
+              >
                 {sectionTitle}
-              </h2>
+              </motion.h2>
             )}
             {sectionSubtitle && (
-              <p className="mt-4 text-lg text-muted-foreground">
+              <motion.p
+                variants={itemVariants}
+                className="mt-4 text-lg text-muted-foreground"
+              >
                 {sectionSubtitle}
-              </p>
+              </motion.p>
             )}
           </div>
         )}
@@ -83,29 +121,30 @@ export const ValuesGridUiSection = ({
           role="list"
         >
           {features.map((feature) => (
-            <Card
-              key={feature.id}
-              className="flex flex-col justify-center items-center h-full p-4 transition-all duration-300 hover:shadow-xl hover:scale-[1.01] hover:border-primary/50 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
-              role="listitem"
-            >
-              <CardHeader className="flex flex-col justify-center items-center p-0 pb-3">
-                <div className="mb-3 p-2 w-fit rounded-lg bg-primary/10 text-primary border border-primary/20 transition-colors duration-200">
-                  <feature.icon className="h-8 w-8 " aria-hidden="true" />
-                </div>
-                <CardTitle className="text-xl font-semibold text-foreground">
-                  {feature.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="p-0 flex-grow">
-                <CardDescription className="text-sm text-muted-foreground">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-              {/* Optional: Add a CardFooter for a "Learn More" link */}
-            </Card>
+            <motion.div variants={itemVariants} key={feature.id}>
+              <Card
+                className="flex flex-col justify-center items-center h-full p-4 transition-all duration-300 hover:shadow-xl hover:scale-[1.01] hover:border-primary/50 focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+                role="listitem"
+              >
+                <CardHeader className="flex flex-col justify-center items-center p-0 pb-3">
+                  <div className="mb-3 p-2 w-fit rounded-lg bg-primary/10 text-primary border border-primary/20 transition-colors duration-200">
+                    <feature.icon className="h-8 w-8 " aria-hidden="true" />
+                  </div>
+                  <CardTitle className="text-xl font-semibold text-foreground">
+                    {feature.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0 flex-grow">
+                  <CardDescription className="text-sm text-muted-foreground">
+                    {feature.description}
+                  </CardDescription>
+                </CardContent>
+                {/* Optional: Add a CardFooter for a "Learn More" link */}
+              </Card>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
