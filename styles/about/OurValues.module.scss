@@ -1,0 +1,32 @@
+.container{
+  background-color: var(--text);
+  padding: 5rem;
+  border-radius: 2rem;
+  margin: 2rem;
+
+  h2{
+    font-weight: 800;
+    color: white;
+  }
+  h3{
+    color: white;
+  }
+  p{
+    color: rgb(255, 255, 255,0.7);
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  svg{
+    color: #c5ee68;
+
+  }
+}
+
+.whyChooseUsListItems{
+  padding: 2rem;
+  margin-top: -2rem;
+  border-radius: 2rem;
+  background-color: #c9f269;
+
+}

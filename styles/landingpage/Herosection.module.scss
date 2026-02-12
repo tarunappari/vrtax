@@ -1,0 +1,39 @@
+.container {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(252, 255, 242, 1) 89%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  .info {
+    padding-top: 0rem;
+    position: relative;
+
+    h1 {
+      span {
+        color: var(--text);
+        font-weight: 800;
+      }
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    .topLine {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .imgContainer {
+    img {
+      border-radius: 2rem;
+      width: 90%;
+    }
+  }
+}

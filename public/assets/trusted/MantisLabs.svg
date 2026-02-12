@@ -1,0 +1,5 @@
+<svg width="400" height="150" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="white"/>
+  <circle cx="80" cy="75" r="30" fill="#0b0f2a"/>
+  <text x="140" y="85" font-size="34" fill="#0b0f2a" font-family="Arial">Mantis Labs</text>
+</svg>

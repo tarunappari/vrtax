@@ -1,0 +1,73 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background-color: #c9f269;
+  border-radius: 1.5rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(8, 60, 47, 0.1);
+  }
+
+  &:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 768px) {
+    &:nth-child(3) {
+      grid-column: auto;
+    }
+  }
+}
+
+.iconWrapper {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 0.5rem;
+  background-color: var(--text);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.3s ease;
+
+  .card:hover & {
+    transform: scale(1.1);
+    background-color: #0a4d3c;
+  }
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-family: "satoshi", serif;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  p {
+    font-size: 0.9rem;
+    color: var(--grey);
+    margin: 0;
+  }
+}
+

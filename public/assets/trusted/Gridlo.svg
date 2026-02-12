@@ -1,0 +1,15 @@
+<svg width="400" height="150" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="white"/>
+  <g fill="#0b0f2a">
+    <rect x="40" y="40" width="15" height="15"/>
+    <rect x="60" y="40" width="15" height="15"/>
+    <rect x="80" y="40" width="15" height="15"/>
+    <rect x="40" y="60" width="15" height="15"/>
+    <rect x="60" y="60" width="15" height="15"/>
+    <rect x="80" y="60" width="15" height="15"/>
+    <rect x="40" y="80" width="15" height="15"/>
+    <rect x="60" y="80" width="15" height="15"/>
+    <rect x="80" y="80" width="15" height="15"/>
+  </g>
+  <text x="130" y="85" font-size="40" fill="#0b0f2a" font-family="Arial">Gridlo</text>
+</svg>

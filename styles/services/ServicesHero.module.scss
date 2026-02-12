@@ -1,0 +1,21 @@
+.container {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 17%,
+    #f6fae6 80%,
+    rgba(255, 255, 255, 1) 99%
+  );
+  h1 {
+    font-weight: 800;
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1rem;
+    width: 90%;
+  }
+
+  img {
+    border-radius: 1rem;
+  }
+}

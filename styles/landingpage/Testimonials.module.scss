@@ -1,0 +1,63 @@
+.testimonialContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 5rem;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    h3{
+      font-size: 0.7rem;
+      font-weight: 900;
+      color: var(--grey) !important;
+      margin-bottom: -1rem;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+    }
+  }
+
+  .testimonialDivider {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .timelineTitle {
+    padding: 3rem;
+    background-color: #c9f269;
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    border-radius: 2rem;
+    padding-left: 2rem;
+
+    h1{
+      font-size: 3rem;
+      font-weight: 900;
+    }
+    h2{
+      font-size: 1.5rem;
+      font-weight: 600;
+    }  }
+
+  .timeline {
+    position: relative;
+    cursor: pointer;
+    background-color: #f6f8f4;
+    padding: 1rem;
+    border-radius: 2rem;
+    .quote {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+    }
+  }
+}

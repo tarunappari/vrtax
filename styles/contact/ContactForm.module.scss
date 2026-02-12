@@ -1,0 +1,63 @@
+.container {
+  width: 100%;
+  background-color: #f6f8f4;
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    font-family: "satoshi", serif;
+  }
+
+  input,
+  textarea {
+    padding: 0.65rem 1rem;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    font-family: "poppins", sans-serif;
+    color: var(--text);
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: var(--text);
+      background-color: white;
+      box-shadow: 0 0 0 3px rgba(8, 60, 47, 0.1);
+    }
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+}
+
+.buttonWrapper {
+  margin-top: 1rem;
+}
+
