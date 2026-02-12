@@ -1,7 +1,7 @@
 "use client";
 
 import { Sparkles } from "@/components/ui/landingpage/trust/sparkles";
-
+import { motion } from "framer-motion";
 import gridlo from "@/public/assets/trusted/Gridlo.png";
 import nexova from "@/public/assets/trusted/Nexova.png";
 import mantisLabs from "@/public/assets/trusted/Mantislabs.png";
@@ -11,57 +11,102 @@ import Rivotech from "@/public/assets/trusted/Rivotech.png";
 import Synthara from "@/public/assets/trusted/Synthara.png";
 import Creatwave from "@/public/assets/trusted/Crestwave.png";
 import Image from "next/image";
-import styles from '@/styles/landingpage/TrustSection.module.scss'
+import styles from "@/styles/landingpage/TrustSection.module.scss";
 
 export function AnimatedTrust() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className={`w-full overflow-hidden bg-white ${styles.container}`}>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
+      className={`w-full overflow-hidden bg-white ${styles.container}`}
+    >
       <div className="mx-auto mt-2 w-full max-w-3xl">
-        <div className={styles.headline}>
+        <motion.div variants={itemVariants} className={styles.headline}>
           <span>Trusted by worlds leading experts.</span>
-        </div>
+        </motion.div>
 
         <div className="mt-14 grid grid-cols-4 gap-8 items-center justify-items-center">
-          <Image
-            src={gridlo}
-            alt="Gridlo"
-            className="h-6 w-auto object-contain"
-          />
-          <Image
-            src={nexova}
-            alt="Nexova"
-            className="h-6 w-auto object-contain"
-          />
-          <Image
-            src={mantisLabs}
-            alt="Mantis Labs"
-            className="h-6 w-auto object-contain"
-          />
-          <Image
-            src={qubiq}
-            alt="Qubiq"
-            className="h-6 w-auto object-contain"
-          />
-          <Image
-            src={Albios}
-            alt="Albios"
-            className="h-6 w-auto object-contain"
-          />
-          <Image
-            src={Synthara}
-            alt="Synthara"
-            className="h-6 w-auto object-contain"
-          />
-          <Image
-            src={Creatwave}
-            alt="Crestwave"
-            className="h-6 w-auto object-contain"
-          />
-          <Image
-            src={Rivotech}
-            alt="Rivotech"
-            className="h-6 w-auto object-contain"
-          />
+          <motion.div variants={itemVariants}>
+            <Image
+              src={gridlo}
+              alt="Gridlo"
+              className="h-6 w-auto object-contain"
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              src={nexova}
+              alt="Gridlo"
+              className="h-6 w-auto object-contain"
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              src={mantisLabs}
+              alt="Gridlo"
+              className="h-6 w-auto object-contain"
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              src={qubiq}
+              alt="Gridlo"
+              className="h-6 w-auto object-contain"
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              src={Albios}
+              alt="Gridlo"
+              className="h-6 w-auto object-contain"
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              src={Rivotech}
+              alt="Gridlo"
+              className="h-6 w-auto object-contain"
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              src={Synthara}
+              alt="Gridlo"
+              className="h-6 w-auto object-contain"
+            />
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Image
+              src={Creatwave}
+              alt="Gridlo"
+              className="h-6 w-auto object-contain"
+            />
+          </motion.div>
         </div>
       </div>
 
@@ -76,8 +121,6 @@ export function AnimatedTrust() {
           color="#000000"
         />
       </div>
-    </div>
+    </motion.div>
   );
 }
-
-

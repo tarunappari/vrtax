@@ -12,7 +12,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div style={{minHeight:'200vh'}}>
+    <div style={{minHeight:'200vh',overflow:"hidden"}}>
       <Header />
       <HeroSection />
       <TrustSection />

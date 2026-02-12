@@ -1,5 +1,5 @@
 "use client";
-
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -7,7 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/landingpage/faq/accordion";
 import Link from "next/link";
-import styles from '@/styles/landingpage/Faq.module.scss'
+import styles from "@/styles/landingpage/Faq.module.scss";
 
 export default function FAQSection() {
   const faqItems = [
@@ -43,10 +43,39 @@ export default function FAQSection() {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section className={`${styles.container}`}>
-      <div className={styles.faqcontainer}>
-        <div className="mx-auto max-w-xl text-center">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.8 }}
+        className={styles.faqcontainer}
+      >
+        <motion.div variants={itemVariants} className="mx-auto max-w-xl text-center">
           <h2 className="text-balance text-3xl font-bold md:text-4xl lg:text-5xl">
             Frequently Asked Questions
           </h2>
@@ -54,9 +83,9 @@ export default function FAQSection() {
             Discover quick and comprehensive answers to common questions about
             our platform, services, and features.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mx-auto max-w-xl">
+        <motion.div variants={itemVariants} className="mx-auto max-w-xl">
           <Accordion
             type="single"
             collapsible
@@ -80,12 +109,15 @@ export default function FAQSection() {
 
           <p className={`${styles.endP} text-muted-foreground mt-6 px-8`}>
             Can't find what you're looking for? Contact our{" "}
-            <Link href="#" className="text-primary font-bold text-white hover:underline">
+            <Link
+              href="#"
+              className="text-primary font-bold text-white hover:underline"
+            >
               customer support team
             </Link>
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

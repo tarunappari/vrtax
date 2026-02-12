@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { FeaturesSectionWithHoverEffects } from "../ui/landingpage/services/services";
 import {
@@ -18,6 +19,7 @@ import {
   IconRefresh,
 } from "@tabler/icons-react";
 import styles from "@/styles/landingpage/Services.module.scss";
+import { motion } from "framer-motion";
 
 const ServicesSection = () => {
   const individualServices = [
@@ -106,19 +108,48 @@ const ServicesSection = () => {
     },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+       staggerChildren: 0.2,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <div className={styles.container}>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.4 }}
+      className={styles.container}
+    >
       <div>
         <div className={styles.title}>
-          <span>SERVICES</span>
-          <h1>Our Tax Services</h1>
-          <p>
+          <motion.span variants={itemVariants}>SERVICES</motion.span>
+          <motion.h1 variants={itemVariants}>Our Tax Services</motion.h1>
+          <motion.p variants={itemVariants}>
             Accurate, secure, and IRS-compliant services designed to simplify
             your tax journey.
-          </p>
+          </motion.p>
         </div>
         <div className={styles.services}>
-          <h2>Individual Services</h2>
+          <motion.h2 variants={itemVariants}>Individual Services</motion.h2>
           <FeaturesSectionWithHoverEffects features={individualServices} />
         </div>
         <div className={styles.services}>
@@ -126,7 +157,7 @@ const ServicesSection = () => {
           <FeaturesSectionWithHoverEffects features={businessServices} />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

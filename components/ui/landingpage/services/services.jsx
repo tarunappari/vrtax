@@ -1,28 +1,52 @@
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
-export function FeaturesSectionWithHoverEffects({features}) {
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
 
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
+
+export function FeaturesSectionWithHoverEffects({ features }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
+    <motion.div
+     variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.6 }}
+    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  relative z-10 py-10 max-w-7xl mx-auto">
       {features.map((feature, index) => (
         <Feature key={feature.title} {...feature} index={index} />
       ))}
-    </div>
+    </motion.div>
   );
 }
 
-const Feature = ({
-  title,
-  description,
-  icon,
-  index,
-}) => {
+const Feature = ({ title, description, icon, index }) => {
   return (
-    <div
+    <motion.div
+    variants={itemVariants}
       className={cn(
         "flex flex-col lg:border-r  py-10 relative group/feature dark:border-neutral-800",
         (index === 0 || index === 4) && "lg:border-l dark:border-neutral-800",
-        index < 4 && "lg:border-b dark:border-neutral-800"
+        index < 4 && "lg:border-b dark:border-neutral-800",
       )}
     >
       {index < 4 && (
@@ -31,7 +55,10 @@ const Feature = ({
       {index >= 4 && (
         <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-[#52766d]/50 dark:from-[#52766d]/50 to-transparent pointer-events-none" />
       )}
-      <div style={{fontSize:'2rem'}} className="mb-4 relative z-10 px-10 text-[#083c2f] dark:text-[#083c2f]">
+      <div
+        style={{ fontSize: "2rem" }}
+        className="mb-4 relative z-10 px-10 text-[#083c2f] dark:text-[#083c2f]"
+      >
         {icon}
       </div>
       <div className="text-lg font-bold mb-2 relative z-10 px-10">
@@ -43,6 +70,6 @@ const Feature = ({
       <p className="text-sm text-[#083c2f]/20 dark:text-[#083c2f]/70 max-w-xs relative z-10 px-10">
         {description}
       </p>
-    </div>
+    </motion.div>
   );
 };

@@ -9,27 +9,6 @@ import desk from "@/public/assets/hero/hero2.jpg";
 import { Button } from "./heroSectionButton";
 import { MoveRight, PhoneCall } from "lucide-react";
 
-// Animation variants for Framer Motion
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const floatingVariants = {
-  animate: {
-    y: [0, -8, 0],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  },
-};
 
 const LandingPageMainHero = ({ className }) => {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -40,6 +19,41 @@ const LandingPageMainHero = ({ className }) => {
     visible: {
       opacity: 1,
       scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  // Animation variants for Framer Motion
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const floatingVariants = {
+    animate: {
+      y: [0, -8, 0],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
       transition: {
         duration: 0.5,
         ease: "easeOut",
@@ -65,7 +79,12 @@ const LandingPageMainHero = ({ className }) => {
         className,
       )}
     >
-      <div className="container mt-10 mx-auto grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="container mt-10 mx-auto grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8"
+      >
         {/* Left Column: Text Content */}
         <div
           className={`relative w-full container mx-auto ${styles.mainContainerOfInfo}`}
@@ -74,7 +93,10 @@ const LandingPageMainHero = ({ className }) => {
             className={`${styles.info} flex gap-8 items-center justify-center flex-col`}
           >
             <div className="flex gap-4 flex-col">
-              <h1 className="text-5xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular">
+              <motion.h1
+                variants={itemVariants}
+                className="text-5xl md:text-5xl max-w-2xl tracking-tighter text-center font-regular"
+              >
                 <span className="text-spektr-cyan-50 font-semibold">
                   “Stress-Free Tax Filing for{" "}
                 </span>
@@ -102,22 +124,25 @@ const LandingPageMainHero = ({ className }) => {
                     </motion.span>
                   ))}
                 </span>
-              </h1>
+              </motion.h1>
 
-              <p className="text-lg md:text-lg leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
+              <motion.p
+                variants={itemVariants}
+                className="text-lg md:text-lg leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center"
+              >
                 We simplify tax filing for individuals and businesses with
                 secure online document submission and accurate, IRS-compliant
                 preparation. Fast, reliable, and completely hassle-free.
-              </p>
+              </motion.p>
             </div>
-            <div className="flex flex-row gap-3">
+            <motion.div variants={itemVariants} className="flex flex-row gap-3">
               <Button size="lg" className="gap-4" variant="outline">
                 Jump on a call <PhoneCall className="w-4 h-4" />
               </Button>
               <Button size="lg" className="gap-4 greenBgButton">
                 Sign up here <MoveRight className="w-4 h-4" />
               </Button>
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -182,7 +207,7 @@ const LandingPageMainHero = ({ className }) => {
             />
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };
