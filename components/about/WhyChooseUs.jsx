@@ -6,7 +6,7 @@ import styles from "@/styles/about/OurValues.module.scss";
 
 const defaultItems = [
   "100% Secure Online Process",
-  "48-Hour Draft Turnaround",
+  "1-Hour Draft Turnaround",
   "IRS-Compliant Filing",
   "Support for Individuals & Businesses",
   "Dedicated Tax Professionals",

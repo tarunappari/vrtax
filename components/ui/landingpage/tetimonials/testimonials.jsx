@@ -26,7 +26,7 @@ const testimonials = [
   },
   {
     quote:
-      "The 48-hour draft turnaround was impressive. Clear communication and zero confusion throughout the process.",
+      "The 1-hour draft turnaround was impressive. Clear communication and zero confusion throughout the process.",
     author: "Amanda Lewis",
     role: "Freelance Designer",
     avatar:

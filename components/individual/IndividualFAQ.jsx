@@ -22,7 +22,7 @@ export default function IndividualFAQ() {
       id: "item-2",
       question: "How long does individual tax filing take?",
       answer:
-        "Once your documents are uploaded, we typically deliver your tax draft within 48 hours. Final filing timelines depend on document completeness and review approval.",
+        "Once your documents are uploaded, we typically deliver your tax draft within 1 hour. Final filing timelines depend on document completeness and review approval.",
     },
     {
       id: "item-3",

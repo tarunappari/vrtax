@@ -15,7 +15,7 @@ export default function FAQSection() {
       id: "item-1",
       question: "How long does the tax filing process take?",
       answer:
-        "Once you upload your documents, we typically deliver your tax draft within 48 hours. Final filing timelines may vary depending on document completeness and review approval.",
+        "Once you upload your documents, we typically deliver your tax draft within 1 hour. Final filing timelines may vary depending on document completeness and review approval.",
     },
     {
       id: "item-2",
