@@ -9,17 +9,17 @@ const ContactInfo = () => {
     {
       icon: IconPhone,
       title: "Phone number",
-      details: ["+99 0123 3654 264", "+99 0123 3644 478"],
+      details: ["+1 214-906-3384"],
     },
     {
       icon: IconMail,
       title: "Our email",
-      details: ["hello@pentaclay.com", "hello@banki.com"],
+      details: ["service@vrtaxfiling.com"],
     },
     {
       icon: IconMapPin,
       title: "Our location",
-      details: ["6391 Elgin St. Celina, Delaware 10299, United States"],
+      details: ["2300 valley view In suite#440,Irving TX 75062"],
     },
   ];
 
